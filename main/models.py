@@ -14,3 +14,10 @@ class PopularCarModel(models.Model):
     max_speed = models.CharField(max_length=3, verbose_name='maximal speed')
     is_active = models.BooleanField(default=False, blank=True, verbose_name=_('is active'))
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
+
+    def __str__(self):
+        return self.brand
+
+    class Meta:
+        verbose_name = _('popular car')
+        verbose_name_plural = _('popular cars')
