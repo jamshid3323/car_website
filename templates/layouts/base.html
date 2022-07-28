@@ -18,9 +18,15 @@
 </head>
 <body>
 
+{% include 'layouts/navbar.html' %}
+
+{% include 'layouts/login_form.html' %}
+
 {% block content %}
 
 {% endblock %}
+
+{% include 'layouts/footer.html' %}
 
 
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>

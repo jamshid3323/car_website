@@ -21,3 +21,19 @@ class PopularCarModel(models.Model):
     class Meta:
         verbose_name = _('popular car')
         verbose_name_plural = _('popular cars')
+
+
+class FeaturedCarModel(models.Model):
+    brand = models.CharField(max_length=50, verbose_name=_('brand'))
+    image = models.ImageField(upload_to='popular_car/', verbose_name=_('image'))
+    model = models.CharField(max_length=30, verbose_name=_('model'))
+    price = models.DecimalField(max_digits=6, decimal_places=3, verbose_name=_('price'))
+    is_active = models.BooleanField(default=False, blank=True, verbose_name=_('is active'))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
+
+    def __str__(self):
+        return self.brand
+
+    class Meta:
+        verbose_name = _('featured car')
+        verbose_name_plural = _('featured cars')
