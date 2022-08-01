@@ -13,7 +13,11 @@
     </nav>
 
     <div id="login-btn">
-        <button class="btn">login</button>
+        {% if request.user.is_authenticated %}
+
+        {% else %}
+            <button class="btn">login</button>
+        {% endif %}
         <i class="far fa-user"></i>
     </div>
 
