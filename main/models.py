@@ -37,3 +37,19 @@ class FeaturedCarModel(models.Model):
     class Meta:
         verbose_name = _('featured car')
         verbose_name_plural = _('featured cars')
+
+
+class MessageModel(models.Model):
+    name = models.CharField(max_length=40, verbose_name=_('name'))
+    email = models.EmailField(verbose_name=_('email'))
+    subject = models.CharField(max_length=50, verbose_name=_('subject'))
+    message = models.TextField(verbose_name=_('message'))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = _('message')
+        verbose_name_plural = _('messages')
+
