@@ -2,6 +2,9 @@ from django.shortcuts import render, reverse
 from django.views.generic import TemplateView, CreateView
 from .models import PopularCarModel, FeaturedCarModel, MessageModel
 from .forms import MessageModelForm
+from django.core.mail import send_mail
+from django.conf.global_settings import EMAIL_HOST_USER
+from .utils import send_bot_message
 
 
 class HomePageView(TemplateView):
@@ -24,4 +27,10 @@ class MessageView(CreateView):
         return reverse('main:home')
 
     def form_invalid(self, form):
-        return super().get_context_data(form)
+        return super().form_invalid(form)
+
+    def form_valid(self, form):
+        # message = f"Assalomu alaykum {form.instance.name}! xabaringizni qabul qildim."
+        # send_mail("Yangi xabar", message, EMAIL_HOST_USER, [form.instance.email])
+        send_bot_message(form.cleaned_data)
+        return super().form_valid(form)
